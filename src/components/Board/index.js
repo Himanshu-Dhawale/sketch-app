@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useLayoutEffect, useRef } from "react"
 import { MENU_ITEMS } from "@/constants";
-import { actionItemClick, menuitemClick } from '@/slice/menuSlice';
+import { actionItemClick } from '@/slice/menuSlice';
+
 
 const Board = () => {
    const dispatch = useDispatch();
@@ -85,6 +86,8 @@ const Board = () => {
        canvas.addEventListener("mousedown", handleMouseDown);
        canvas.addEventListener("mousemove", handleMouseMove);
        canvas.addEventListener("mouseup", handleMouseUp);
+
+       
 
        return () => {
        canvas.removeEventListener("mousedown", handleMouseDown);
