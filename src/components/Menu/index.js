@@ -9,7 +9,7 @@ import { actionItemClick, menuitemClick } from '@/slice/menuSlice';
 const Menu = () => {
   const dispatch = useDispatch();
 
-  const activeMenuItem = useSelector((state) => state.menu.activeMenuItem);
+  const activeMenuItem = useSelector((state) => state?.menu?.activeMenuItem);
 
   const handleMenuClick = (itemName) => {
     dispatch(menuitemClick(itemName));

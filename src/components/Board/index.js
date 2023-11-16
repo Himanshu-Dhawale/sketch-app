@@ -10,19 +10,19 @@ const Board = () => {
    const drawHistory = useRef([]);
    const historyPointer = useRef(0);
    const shouldDraw = useRef(false);
-   const {activeMenuItem, actionMenuItem} = useSelector((state) => state.menu);
+   const {activeMenuItem, actionMenuItem} = useSelector((state) => state?.menu);
 //    const {color, size} = useSelector((state) => state.toolbox[activeMenuItem]);
    const { color, size } = useSelector((state) => 
    state.toolbox[activeMenuItem] || { color: 'defaultColor', size: 'defaultSize' });
 
 
    useEffect(() =>{
-    if(!canvasRef.current) return
+    if(!canvasRef?.current) return
         const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
+        const context = canvas?.getContext('2d');
      if(actionMenuItem === MENU_ITEMS.DOWNLOAD){
-        const URL = canvas.toDataURL()
-        const anchor = document.createElement('a');
+        const URL = canvas?.toDataURL()
+        const anchor = document?.createElement('a');
         anchor.href = URL
         anchor.download = "sketch.jpg";
         anchor.click();
@@ -36,9 +36,9 @@ const Board = () => {
    },[actionMenuItem, dispatch])
   
     useEffect(() => {
-        if(!canvasRef.current) return
+        if(!canvasRef?.current) return
         const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
+        const context = canvas?.getContext('2d');
         const changeConfig = () => {
             context.strokeStyle = color
             context.lineWidth = size
@@ -48,9 +48,9 @@ const Board = () => {
     },[color, size])
 
     useLayoutEffect(() => {
-        if(!canvasRef.current) return
+        if(!canvasRef?.current) return
         const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
+        const context = canvas?.getContext('2d');
 
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
